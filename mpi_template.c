@@ -5,7 +5,7 @@ main(int argc, char** argv)
 {
 	int my_rank;
 	int p;
-	int exit;
+	int done;
 
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
@@ -22,11 +22,11 @@ main(int argc, char** argv)
 		
 		if (my_rank == 0) {
 			printf("0. Synexeia - 1. Eksodos\n");
-			scanf("%d", &exit);
+			scanf("%d", &done);
 			printf("\n");
 		}
-		MPI_Bcast(&exit, 1, MPI_INT, 0, MPI_COMM_WORLD);
-	}while (!exit);
+		MPI_Bcast(&done, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	}while (!done);
 	
 	MPI_Finalize();
 }
